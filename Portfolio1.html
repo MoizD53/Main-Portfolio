@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moiz Dheela - Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Basic Reset and Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            
+            /* 🎨 IMAGE BACKGROUND STYLING */
+            background-color: #0d1218; /* Fallback color if image fails to load */
+            background-image: url("C:\Users\Moiz Dheela\Downloads\download.jpeg"); /* <<< REPLACE THIS URL */
+            background-size: cover; /* Ensures the image covers the whole background */
+            background-attachment: fixed; /* Keeps the background image fixed when scrolling */
+            background-position: center center; /* Centers the image */
+            
+            color: #E0E0E0;
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        /* Applying a dark overlay to ensure text remains readable over the image */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6); /* Dark semi-transparent overlay */
+            z-index: -1; /* Place behind content */
+        }
+
+
+        h1, h2, h3 {
+            color: #FFFFFF;
+            font-weight: 600;
+        }
+        
+        /* Accent Color: Professional Teal/Aqua */
+        :root {
+            --accent-color: #00ADB5; 
+            --light-accent: #39C8D0;
+            --dark-background: #1F2833;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--accent-color); 
+            transition: color 0.3s;
+        }
+
+        a:hover {
+            color: var(--light-accent);
+        }
+
+        /* --- 1. Header/Navigation --- */
+        header {
+            background: rgba(13, 18, 24, 0.9); /* Opaque header for readability */
+            backdrop-filter: blur(8px); 
+            padding: 18px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(0, 173, 181, 0.2); 
+        }
+
+        .logo {
+            font-size: 1.6em;
+            font-weight: 700;
+            color: var(--accent-color);
+        }
+
+        nav a {
+            margin-left: 35px;
+            font-weight: 400;
+            color: #C0C0C0;
+            position: relative;
+        }
+        
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            display: block;
+            margin-top: 5px;
+            background: var(--accent-color);
+            transition: width 0.3s ease;
+            bottom: -5px;
+            left: 0;
+        }
+        
+        nav a:hover::after {
+            width: 100%;
+        }
+
+
+        /* --- Content Sections --- */
+        .content-section {
+            padding: 100px 5%;
+            max-width: 1000px;
+            margin: auto;
+            /* Using a slight transparency to let the image show through the content boxes */
+            background-color: rgba(13, 18, 24, 0.95); 
+            border-radius: 8px; /* Soft edges for content boxes */
+            margin-bottom: 40px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        #future-work { 
+            background: rgba(22, 28, 36, 0.95); /* Slightly lighter background for separation */
+        }
+        
+        h2 {
+            font-size: 2.5em;
+            margin-bottom: 40px;
+            text-align: center;
+            letter-spacing: 1px;
+            border-bottom: 2px solid rgba(0, 173, 181, 0.1);
+            padding-bottom: 10px;
+            display: inline-block;
+        }
+
+        /* --- 2. Hero Section --- */
+        .hero-section {
+            height: 90vh; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding-top: 50px;
+            /* Hero section is fully transparent to showcase the background image */
+            background: transparent; 
+            box-shadow: none;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 30px;
+            background-color: rgba(0, 0, 0, 0.5); /* A dark box behind the main text */
+            border-radius: 8px;
+        }
+
+        .hero-content h1 {
+            font-size: 4em;
+            margin-bottom: 5px;
+            font-weight: 700;
+        }
+
+        .hero-content h2 {
+            font-size: 1.5em;
+            color: var(--accent-color);
+            margin-bottom: 30px;
+            border-bottom: none;
+        }
+
+        .hero-content p {
+            font-size: 1.1em;
+            color: #A0A0A0;
+            margin-bottom: 30px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--accent-color); 
+            color: #111111;
+            padding: 15px 40px;
+            border-radius: 50px; 
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 15px rgba(0, 173, 181, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: var(--light-accent);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 173, 181, 0.6);
+        }
+
+        /* --- 3. About Me Section --- */
+        .about-content {
+            text-align: center;
+            font-size: 1.1em;
+            color: #C0C0C0;
+            line-height: 1.8;
+        }
+
+        /* --- 4. Skills Section --- */
+        .skills-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 40px;
+        }
+
+        .skill-item {
+            background: #1A1A1A;
+            color: var(--light-accent);
+            padding: 12px 25px;
+            border-radius: 4px;
+            border-bottom: 3px solid var(--accent-color); 
+            font-weight: 400;
+            font-size: 0.95em;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            transition: transform 0.2s;
+        }
+        
+        .skill-item:hover {
+            transform: translateY(-3px);
+            background: #252525;
+        }
+
+
+        /* --- 5. Current Focus / Future Work Section --- */
+        .focus-card {
+            background: #080808;
+            padding: 40px;
+            border-radius: 8px;
+            border: 1px solid rgba(0, 173, 181, 0.3);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .focus-card h3 {
+            color: var(--accent-color);
+            margin-bottom: 25px;
+            font-size: 1.8em;
+            font-weight: 600;
+        }
+        
+        .focus-card p {
+            color: #C0C0C0;
+        }
+        
+        .focus-card ul {
+            list-style: none;
+            padding: 0;
+            margin-top: 25px;
+            text-align: left;
+            border-top: 1px dashed rgba(255, 255, 255, 0.1);
+            padding-top: 20px;
+        }
+        
+        .focus-card ul li {
+            background: #111111;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            color: #E0E0E0;
+            border-left: 4px solid var(--accent-color); 
+        }
+        
+        .focus-card ul li strong {
+            color: var(--light-accent);
+        }
+
+        /* --- 6. Contact Section --- */
+        #contact {
+            text-align: center;
+        }
+        
+        #contact p {
+             margin-bottom: 30px;
+        }
+
+        .contact-links {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .contact-button {
+            background-color: #1A1A1A;
+            color: var(--accent-color);
+            padding: 12px 25px;
+            border-radius: 4px;
+            border: 1px solid var(--accent-color);
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .contact-button:hover {
+            background-color: var(--accent-color);
+            color: #111111;
+        }
+
+        /* --- Footer --- */
+        footer {
+            text-align: center;
+            padding: 25px 5%;
+            background: #000000;
+            font-size: 0.9em;
+            color: #707070;
+            border-top: 1px solid #111111;
+        }
+
+        /* Basic Responsiveness */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 3em;
+            }
+            .hero-content h2 {
+                font-size: 1.2em;
+            }
+            header {
+                flex-direction: column;
+            }
+            nav {
+                margin-top: 15px;
+            }
+            nav a {
+                margin: 0 10px;
+                font-size: 0.9em;
+            }
+            .content-section {
+                padding: 60px 5%;
+            }
+        }
+    </style>
+    </head>
+<body>
+
+    <header>
+        <div class="logo">Moiz Dheela</div>
+        <nav>
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#future-work">Focus</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <section id="hero" class="hero-section">
+        <div class="hero-content">
+            <h1>Hi, I'm Moiz Dheela</h1>
+            <h2>Software Developer | Dart & Flutter Enthusiast</h2>
+            <p>I build elegant and efficient solutions using Python, C++, and modern mobile frameworks. Let's create something amazing!</p>
+            <a href="#future-work" class="cta-button">See My Current Focus</a>
+        </div>
+    </section>
+
+    <section id="about" class="content-section">
+        <h2>🧑‍💻 About Me</h2>
+        <div class="about-content">
+            <p>I am a highly motivated individual with a strong foundation in foundational programming languages like **Python, C, and C++**, alongside experience in **SQL** and **Unix** environments. I have a passion for mobile and cross-platform development, and I am currently focused on expanding my skills with **Dart and Flutter**. I thrive in collaborative environments and love tackling complex challenges in software development.</p>
+        </div>
+    </section>
+
+    <section id="skills" class="content-section">
+        <h2>🛠️ Core Skills</h2>
+        <div class="skills-grid">
+            <div class="skill-item">Python</div>
+            <div class="skill-item">C / C++</div>
+            <div class="skill-item">Dart & Flutter</div>
+            <div class="skill-item">HTML & CSS</div>
+            <div class="skill-item">SQL</div>
+            <div class="skill-item">Unix</div>
+        </div>
+    </section>
+
+    <section id="future-work" class="content-section">
+        <h2>💡 Current Focus & Projects in Progress</h2>
+        <div class="focus-card">
+            <h3>Actively Building My Portfolio!</h3>
+            <p>My main focus is on practical application and skill expansion. I am currently working on ambitious projects that leverage my core and emerging skills:</p>
+            <ul>
+                <li>**Mobile App Development:** Designing and building a cross-platform application using **Dart and Flutter** to solve a real-world utility problem. (Planned completion: Q2 2025)</li>
+                <li>**Data Analysis Pipeline:** Developing an end-to-end data processing script in **Python** combined with **SQL** for database management and reporting.</li>
+                <li>**Foundational Review:** Reinforcing advanced concepts in **C++** and optimizing problem-solving techniques for competitive coding.</li>
+            </ul>
+            <p style="margin-top: 15px; font-style: italic; color: var(--accent-color);">These high-quality projects will be featured here upon their completion. Stay tuned!</p>
+        </div>
+    </section>
+
+    <section id="contact" class="content-section">
+        <h2>📧 Get In Touch</h2>
+        <p>I'm currently looking for new opportunities and collaborations. Feel free to connect!</p>
+        <div class="contact-links">
+            <a href="mailto:moizdhilawala99@gmail.com" class="contact-button">Email Me</a>
+            <a href="https://www.linkedin.com/in/moiz-dheela-7829bb31b/" target="_blank" class="contact-button">LinkedIn</a>
+            <a href="https://github.com/MoizD53" target="_blank" class="contact-button">GitHub</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Moiz Dheela. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
